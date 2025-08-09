@@ -157,7 +157,8 @@ class DebianTrixieMonitor {
       if (data.contents) {
         const content = data.contents.toLowerCase();
 
-        if (content.includes("debian 13")) {
+        if (content.includes("debian 13") || content.includes("debian 13")) {
+          // TEMP: Added "debian 12" for testing
           this.debugLog(
             '✅ VERIFIED: Release notes contain "Debian 13"!',
             "success"
@@ -234,11 +235,16 @@ class DebianTrixieMonitor {
 
       // Check if latest entry matches keywords for Trixie release
       const titleLower = title.toLowerCase();
-      const hasTrixie = titleLower.includes("trixie");
+      const hasTrixie =
+        titleLower.includes("trixie") || titleLower.includes("debian"); // TEMP: Added "debian" for testing
       const hasRelease =
         titleLower.includes("release day") ||
         titleLower.includes("released") ||
-        titleLower.includes("debian 13");
+        titleLower.includes("stable") ||
+        titleLower.includes("releasing") ||
+        titleLower.includes("debian 13") ||
+        titleLower.includes("debian 12") ||
+        titleLower.includes("release"); // TEMP: Added broader "release" for testing
 
       this.debugLog(
         `🎯 Found: Trixie=${hasTrixie}, Release=${hasRelease}`,
@@ -384,7 +390,7 @@ class DebianTrixieMonitor {
           '<span class="not-released">❌ Not yet released</span>';
         break;
       case "maybe":
-        statusElement.innerHTML = `<span class="checking">🤔 Maybe? ${extra}</span>`;
+        statusElement.innerHTML = `<span class="checking">❌ Not yet released, soon..</span>`;
         break;
       case "released":
         statusElement.innerHTML =
