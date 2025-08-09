@@ -105,7 +105,7 @@ class DebianTrixieMonitor {
   startMonitoring() {
     // Set up the next check time
     this.scheduleNextCheck();
-    
+
     setInterval(() => {
       if (!this.isReleased) {
         this.checkFeed();
@@ -437,7 +437,7 @@ class DebianTrixieMonitor {
   updateCountdown(seconds) {
     const lastCheckElement = document.getElementById("last-check");
     if (lastCheckElement && !this.isReleased) {
-      const lastCheckedText = lastCheckElement.textContent.split(' - ')[0];
+      const lastCheckedText = lastCheckElement.textContent.split(" - ")[0];
       lastCheckElement.textContent = `${lastCheckedText} - Next refresh in ${seconds}s`;
     }
   }

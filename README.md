@@ -1,76 +1,83 @@
-# 🐧 Debian Trixie Release Countdown
+# Debian Trixie Release Countdown
 
-A fun little project that monitors Debian news feeds for the release of Debian 13 "Trixie"!
+A simple web page that watches for Debian 13 "Trixie" release announcements and celebrates with fireworks when it happens.
 
 ## What it does
 
-- Monitors multiple Debian news feeds (News, Security, Planet Debian)
-- Looks for keywords like "trixie", "Debian 13", "released", "available"
-- Shows "YES!" with fireworks when it detects a likely Trixie release
-- Checks every 30 seconds automatically
-- Mobile-friendly responsive design
+Checks the Debian micronews feed every 30 seconds looking for Trixie release announcements. When it finds one, it verifies against the official release notes and then launches a fireworks celebration.
+
+The page shows the 3 most recent news entries and has a live countdown showing when the next check will happen.
+
+## Features
+
+- Monitors Debian micronews feed automatically
+- Verifies releases against official documentation
+- Fireworks celebration with sound effects
+- Debug console for monitoring details
+- Test button to preview the fireworks
+- Works on mobile devices
 
 ## How it works
 
-The app uses a scoring system based on keyword detection:
+1. Fetches the latest entries from Debian micronews
+2. Looks for "trixie" + release keywords in titles
+3. Cross-checks with the official release notes page
+4. Celebrates when both sources confirm the release
 
-- Must find "trixie" AND ("released" OR "available")
-- Must have a minimum score of 2 keyword matches
-- Checks the 10 most recent entries from each feed
+Only shows news entries from August 9th, 2025 onwards to keep things current.
 
-## Keywords being monitored
+## Live site
 
-- `trixie` - The codename for Debian 13
-- `debian 13` - The version number
-- `released` - Release announcement keyword
-- `available` - Availability keyword
+Visit the live version at: `https://kivylius.github.io/trixie-release-countdown/`
 
-## Feeds being monitored
+You can test the fireworks using the simulation button.
 
-- Debian News RSS
-- Debian Security Announcements
-- Planet Debian (community blog aggregator)
+## Project structure
 
-## GitHub Pages Deployment
+```
+docs/
+├── index.html    # Main page
+├── style.css     # Styling
+├── script.js     # Monitoring logic
+└── _config.yml   # GitHub Pages config
+```
 
-The project is designed to run on GitHub Pages:
+## Setting up GitHub Pages
 
-1. Enable GitHub Pages in your repository settings
+1. Go to your repository Settings → Pages
 2. Set source to "Deploy from a branch"
-3. Select "main" branch and "/docs" folder
-4. Your site will be available at `https://kivylius.github.io/trixie-release-countdown`
+3. Choose "main" branch and "/docs" folder
+4. Your site will be live in a few minutes
 
-## Files
+## Technical details
 
-- `docs/index.html` - Main HTML structure
-- `docs/style.css` - Styling and animations
-- `docs/script.js` - Feed monitoring logic and fireworks
+- Uses AllOrigins proxy to bypass CORS restrictions
+- Parses Atom XML feeds with the browser's DOMParser
+- Fireworks powered by the fireworks.js library
+- Responsive design works on desktop and mobile
 
-## Technical Notes
+## Local development
 
-- Uses AllOrigins.win as a CORS proxy to fetch feeds
-- Supports both RSS and Atom feed formats
-- Gracefully handles feed parsing errors
-- Includes celebration sound effects (when browser allows)
-
-## Local Development
-
-Simply open `docs/index.html` in a web browser, or serve the docs folder with any local server:
+Clone the repo and serve the docs folder:
 
 ```bash
-# Using Python
 cd docs
 python -m http.server 8000
-
-# Using Node.js
-cd docs
+# or
 npx serve .
 ```
 
+Then visit `http://localhost:8000`
+
+## Sources monitored
+
+- Primary: [Debian Micronews](https://micronews.debian.org/feeds/atom.xml)
+- Verification: [Official Release Notes](https://www.debian.org/releases/stable/releasenotes)
+
 ## Contributing
 
-This is just a fun project!
+Feel free to fork this project and make it your own. It's just a fun way to monitor for the Trixie release.
 
 ## License
 
-MIT License - Have fun with it! 🎉
+MIT License - do whatever you want with it.
