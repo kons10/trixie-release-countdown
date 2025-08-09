@@ -1,0 +1,5 @@
+# Debian Trixie Release Countdown
+
+theme: jekyll-theme-minimal
+title: "🐧 Debian Trixie Release Countdown"
+description: "Monitoring Debian feeds for the release of Trixie (Debian 13)"

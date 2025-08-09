@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debian Trixie Release Countdown</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🐧 Debian Trixie Release Countdown</h1>
+        <div class="status-card">
+            <div id="status" class="status">
+                <span class="checking">Checking for release...</span>
+            </div>
+            <div id="last-check" class="last-check">
+                Last checked: Never
+            </div>
+        </div>
+        
+        <div class="feed-info">
+            <h3>Monitoring Sources:</h3>
+            <p>📰 Primary: <a href="https://micronews.debian.org/feeds/atom.xml" target="_blank">Debian Micronews</a></p>
+            <p>🏛️ Verification: <a href="https://www.debian.org/releases/stable/releasenotes" target="_blank">Release Notes</a></p>
+            <div id="latest-entry" class="latest-entry">
+                <strong>Recent Micronews Entries:</strong>
+                <div id="entry-content">Loading...</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="simulate-release" class="simulate-button">🎆 Simulate Release (Test Fireworks)</button>
+            <button id="stop-fireworks" class="debug-toggle" style="display: none;">🛑 Stop Fireworks</button>
+            <button id="download-release" class="download-button" style="display: none;">📥 Download Debian 13 Trixie</button>
+            <button id="toggle-debug" class="debug-toggle">🔍 Show Debug Console</button>
+        </div>
+
+        <div class="debug-panel" id="debug-panel" style="display: none;">
+            <h3>🔍 Debug Console:</h3>
+            <div id="debug-output" class="debug-output">
+                <div class="debug-line">Starting up...</div>
+            </div>
+            <button id="clear-debug" class="debug-button">Clear Debug</button>
+        </div>
+
+        </div>
+    </div>
+
+    <!-- Fireworks container -->
+    <canvas id="fireworks-canvas"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
